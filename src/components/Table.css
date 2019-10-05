@@ -1,0 +1,9 @@
+.table {
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+    text-align: left;
+}
+.cb {
+    width: 10px;
+}

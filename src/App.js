@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+import Form from './components/Form';
+import Table from './components/Table';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	const data = [
+		{ title: 'Membuat component form', status: false },
+		{ title: 'Membuat component table', status: false },
+	]
+	
+	const [todos, setTodos] = useState(data)
+
+	const handleForm = val => {
+		const newTodos = [...todos, { title: val, status: false }]
+		setTodos(newTodos)
+	}
+
+	const handleDelete = index => {
+		const newTodos = [...todos]
+		if (index > -1) {
+			newTodos.splice(index, 1);
+		}
+		setTodos(newTodos);
+	}
+
+	const handleCheck = (index, stat) => {
+		const newTodos = [...todos]
+		newTodos[index].status = stat
+		setTodos(newTodos);
+		console.log(newTodos);
+	}
+
+	return (
+		<div className="App">
+			<h1>React Hooks ToDo</h1>
+			<Table data={todos} onDeleteTodos={handleDelete} onCheckedTodos={handleCheck}/>
+			<Form onSubmitTodos={handleForm}/>
+		</div>
+	);
 }
 
 export default App;
