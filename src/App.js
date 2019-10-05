@@ -9,6 +9,7 @@ function App() {
 	const data = [
 		{ title: 'Membuat component form', status: false },
 		{ title: 'Membuat component table', status: false },
+		{ title: 'Membuat tutorial to do menggunakan react hooks', status: false },
 	]
 	
 	const [todos, setTodos] = useState(data)
@@ -35,6 +36,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<img className="mb-3" src={process.env.PUBLIC_URL + '/logo192.png'} height="100px" alt="react todo"/>
 			<h1>React Hooks ToDo</h1>
 			<Table data={todos} onDeleteTodos={handleDelete} onCheckedTodos={handleCheck}/>
 			<Form onSubmitTodos={handleForm}/>
